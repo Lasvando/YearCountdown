@@ -1,0 +1,32 @@
+<%- include ('_layout/header') -%>
+
+    <div class="hero-image">
+        <div id="fireworks" class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+        </div>
+        <div class="container hero-text">
+            <h1 class="text-center year-text" style="font-size: 10em;"><b><%- nextYear %> </b></h1>
+            <div id="clock"></div>
+            <div class="container bg-white text-dark mt-5 p-2 " style="border-radius: 25px;border: 5px solid green;">
+                <h5>Oggi è il <b><%= day+'/'+month %> </b></h5>
+                <p><%= funFact %> </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#clock').countdown(`${new Date().getFullYear() + 1}/1/1`, function (event) {
+            var $this = $(this).html(event.strftime(''
+                + '<div class="d-flex justify-content-around clock mt-4">'
+                + '<div class="time-div"><span>%w</span><span> Settimane</span></div>'
+                + '<div><span>%d</span><span> Giorni</span></div>'
+                + '<div><span>%H</span><span> Ore</span></div>'
+                + '<div><span>%M</span><span> Minuti</span></div>'
+                + '<div><span>%S</span><span> Secondi</span></div>'
+                + '</div>'
+            ));
+        })    
+    </script>
+    
+    <%- include ('_layout/footer') -%>
